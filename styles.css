@@ -1,0 +1,241 @@
+/* styles.css */
+:root {
+  --primary-color: #1E90FF;
+  --secondary-color: #2ECC71;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.nav-logo {
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  background-color: var(--secondary-color);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s linear;
+  position: relative;
+  display: block;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+.nav-toggle.active .hamburger {
+  background-color: transparent;
+}
+
+.nav-toggle.active .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.nav-toggle.active .hamburger::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Hero Section */
+.hero-section {
+  padding-top: 80px;
+  background-color: white;
+  text-align: center;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+}
+
+.hero-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.bio {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.about-section,
+.skills-section,
+.contact-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.about-section h2,
+.skills-section h2,
+.contact-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.skill-card {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  user-select: none;
+}
+
+.skill-card:hover,
+.skill-card:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(46, 204, 113, 0.4);
+}
+
+/* Contact Section */
+.contact-section p {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.contact-section a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.contact-section a:hover,
+.contact-section a:focus {
+  text-decoration: underline;
+}
+
+/* Responsive - Mobile first */
+
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    background-color: var(--primary-color);
+    height: calc(100% - 60px);
+    width: 200px;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    padding-top: 1rem;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+  
+  .skills-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-img {
+    width: 90vw;
+    height: auto;
+    max-width: 300px;
+  }
+}
